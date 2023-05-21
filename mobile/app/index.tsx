@@ -11,7 +11,7 @@ const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
   tokenEndpoint: 'https://github.com/login/oauth/access_token',
   revocationEndpoint:
-    'https://github.com/settings/connections/applications/1518c115aed647a01a38',
+    'https://github.com/settings/connections/applications/d26f194cc5d5132a51be',
 }
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
 
   const [, response, signInWithGithub] = useAuthRequest(
     {
-      clientId: '1518c115aed647a01a38',
+      clientId: 'd26f194cc5d5132a51be',
       scopes: ['identity'],
       redirectUri: makeRedirectUri({
         scheme: 'nlwspacetime',
@@ -42,10 +42,12 @@ export default function App() {
 
   useEffect(() => {
     // console.log(
+    //   'response',
     //   makeRedirectUri({
     //     scheme: 'nlwspacetime',
     //   }),
     // )
+
     if (response?.type === 'success') {
       const { code } = response.params
 
@@ -54,7 +56,7 @@ export default function App() {
   }, [response])
 
   return (
-    <View className=" flex-1 items-center px-8 py-10">
+    <View className="flex-1 items-center px-8 py-10">
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
 
@@ -70,11 +72,11 @@ export default function App() {
 
         <TouchableOpacity
           activeOpacity={0.7}
-          className="rounded-full bg-green-500 px-5 py-3"
+          className="rounded-full bg-green-500 px-5 py-2"
           onPress={() => signInWithGithub()}
         >
-          <Text className="tet-sm font-alt uppercase  text-black">
-            Cadastrar Lembrança
+          <Text className="font-alt text-sm uppercase text-black">
+            Cadastrar lembrança
           </Text>
         </TouchableOpacity>
       </View>
